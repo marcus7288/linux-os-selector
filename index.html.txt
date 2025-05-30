@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Linux OS Selection</title>
+</head>
+<body>
+  <h2>Select Your Preferred Linux OS</h2>
+  <form id="osForm">
+    <label for="studentName">Student Name:</label>
+    <input type="text" id="studentName" required><br><br>
+
+    <label for="osSelect">Choose an OS:</label>
+    <select id="osSelect" required>
+      <option value="Ubuntu">Ubuntu</option>
+      <option value="Fedora">Fedora</option>
+      <option value="Arch Linux">Arch Linux</option>
+      <option value="Linux Mint">Linux Mint</option>
+      <option value="openSUSE">openSUSE</option>
+    </select><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h3>Selections:</h3>
+  <ul id="selectionList"></ul>
+
+  <script>
+    const form = document.getElementById('osForm');
+    const osSelect = document.getElementById('osSelect');
+    const selectionList = document.getElementById('selectionList');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const name = document.getElementById('studentName').value;
+      const os = osSelect.value;
+
+      // Add to list
+      const listItem = document.createElement('li');
+      listItem.textContent = `${name} selected ${os}`;
+      selectionList.appendChild(listItem);
+
+      // Remove selected OS from dropdown
+      osSelect.querySelector(`option[value="${os}"]`).remove();
+
+      // Reset form
+      form.reset();
+    });
+  </script>
+</body>
+</html>
