@@ -1,7 +1,6 @@
-
 services:
   - type: web
-    name: linux-os-selector
+    name: flask-app
     env: python
     buildCommand: ""
     startCommand: python app.py
